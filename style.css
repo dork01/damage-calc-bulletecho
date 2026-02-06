@@ -1,0 +1,177 @@
+:root{
+  --bg:#0b0f14;
+  --card:#121925;
+  --muted:#9fb0c3;
+  --text:#eaf2ff;
+  --accent:#5aa7ff;
+  --border:rgba(255,255,255,.08);
+  --good: rgba(132,255,210,.22);
+  --bad: rgba(255,120,120,.18);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(90,167,255,.15), transparent 55%),
+              radial-gradient(900px 700px at 90% 10%, rgba(132,255,210,.10), transparent 60%),
+              var(--bg);
+  color:var(--text);
+}
+.app{ max-width:1200px; margin: 22px auto; padding: 0 14px 24px; }
+
+.top{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+h1{ margin: 0; font-size: 20px; letter-spacing:.2px; }
+
+.actions{ display:flex; gap:10px; flex-wrap:wrap; }
+button{
+  border:1px solid rgba(90,167,255,.55);
+  background: rgba(90,167,255,.18);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor:pointer;
+  font-weight: 750;
+}
+button:hover{ filter: brightness(1.08); }
+button.ghost{ border-color: var(--border); background: rgba(255,255,255,.04); font-weight:650; }
+button.danger{ border-color: rgba(255,120,120,.5); background: var(--bad); }
+button:disabled{ opacity:.5; cursor:not-allowed; }
+
+.grid{ margin-top: 12px; display:grid; grid-template-columns: 1.4fr .8fr 1fr; gap:12px; }
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.card h2{ margin:0 0 10px; font-size: 15px; }
+h3{ margin: 4px 0 8px; font-size: 13px; color: rgba(234,242,255,.9); }
+
+.twoCol{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+label{
+  display:flex; flex-direction:column; gap:6px;
+  margin: 10px 0; font-size: 12.5px; color: rgba(234,242,255,.9);
+}
+input{
+  width:100%;
+  border-radius: 12px;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.25);
+  color: var(--text);
+  padding: 9px 11px;
+  outline:none;
+}
+input:focus{
+  border-color: rgba(90,167,255,.6);
+  box-shadow: 0 0 0 3px rgba(90,167,255,.15);
+}
+
+.mini{ display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 6px; }
+.chip{
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.chip b{ color: var(--text); }
+
+.full{ width:100%; margin-top: 10px; }
+
+.formResults{
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px;
+}
+.formResults .r{
+  display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  border:1px dashed rgba(255,255,255,.10);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: rgba(234,242,255,.85);
+}
+.formResults .r b{ color: var(--accent); font-size: 14px; }
+
+.hint{ margin: 10px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+.setsList{ display:flex; flex-direction:column; gap:8px; }
+.setCard{
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  border-radius: 14px;
+  padding: 10px;
+  cursor:pointer;
+}
+.setCard:hover{ border-color: rgba(90,167,255,.35); }
+.setCard.active{ border-color: rgba(90,167,255,.65); box-shadow: 0 0 0 3px rgba(90,167,255,.12); }
+.setTitle{ display:flex; justify-content:space-between; gap:10px; align-items:center; }
+.setTitle b{ font-size: 13px; }
+.setMeta{ margin-top: 6px; color: var(--muted); font-size: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+.smallBtnRow{ margin-top: 10px; display:flex; gap:8px; }
+.smallBtn{
+  flex:1;
+  border-color: var(--border);
+  background: rgba(255,255,255,.03);
+  font-weight:650;
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+
+.tableWrap{ overflow:auto; border-radius: 12px; border:1px solid var(--border); }
+table{ width:100%; border-collapse: collapse; min-width: 760px; }
+th, td{ padding: 10px 10px; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 12.5px; text-align:left; }
+th{ color: rgba(234,242,255,.85); background: rgba(255,255,255,.03); position: sticky; top:0; }
+td b{ color: var(--accent); }
+tr.best{ background: var(--good); }
+
+@media (max-width: 1050px){
+  .grid{ grid-template-columns: 1fr; }
+  .twoCol{ grid-template-columns: 1fr; }
+}
+/* Мобила: всё, что "в ряд" -> в колонку */
+@media (max-width: 720px){
+
+  /* 1) Карточка сета: мета-данные под названием — в столбик */
+  .setMeta{
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
+  }
+
+  /* 2) Мини-плашки (effAP / HP/выстр / броня/выстр) — в столбик */
+  .mini{
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .chip{
+    width: 100% !important;
+    border-radius: 12px !important; /* чтобы как карточка */
+    display:flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* 3) Результаты формы — в одну колонку */
+  .formResults{
+    grid-template-columns: 1fr !important;
+  }
+  .formResults .r{
+    padding: 12px 12px !important;
+  }
+
+  /* 4) Кнопки внутри карточки сета — в столбик (удобнее для пальцев) */
+  .smallBtnRow{
+    flex-direction: column !important;
+  }
+  .smallBtn{
+    width: 100% !important;
+  }
+}
