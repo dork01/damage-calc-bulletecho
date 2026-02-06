@@ -8,8 +8,124 @@
 </head>
 <body>
 
-  <!-- СЮДА ВСТАВИШЬ HTML ИЗ CODEPEN -->
-  <!-- div class="app" ... -->
+  <div class="app">
+  <div class="top">
+    <h1>Калькулятор урона (AP→HP, AR режет AP) + сравнение сетов</h1>
+    <div class="actions">
+      <button id="addSetBtn">➕ Добавить сет</button>
+      <button id="updateSetBtn" class="ghost" disabled>Обновить выбранный сет</button>
+      <button id="clearSetsBtn" class="danger">Очистить все</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Текущие параметры (форма)</h2>
+
+      <div class="twoCol">
+        <div>
+          <h3>Оружие</h3>
+
+          <label>Урон за выстрел
+            <input id="damage" type="number" min="0" step="0.01" value="100">
+          </label>
+
+          <label>Модификатор урона по HP
+            <input id="hpMod" type="number" min="0" step="0.01" value="1">
+          </label>
+
+          <label>Модификатор урона по броне
+            <input id="armorMod" type="number" min="0" step="0.01" value="1">
+          </label>
+
+          <label>Бронебойность AP (% урона в HP)
+            <input id="ap" type="number" min="0" max="100" step="0.1" value="50">
+          </label>
+
+          <label>Скорость стрельбы (выстр./сек)
+            <input id="rof" type="number" min="0.01" step="0.01" value="5">
+          </label>
+
+          <label>Время перезарядки (сек)
+            <input id="reload" type="number" min="0" step="0.01" value="2.2">
+          </label>
+
+          <label>Размер магазина (патроны)
+            <input id="mag" type="number" min="1" step="1" value="10">
+          </label>
+        </div>
+
+        <div>
+          <h3>Соперник</h3>
+
+          <label>HP
+            <input id="enemyHp" type="number" min="0" step="0.01" value="600">
+          </label>
+
+          <label>Броня
+            <input id="enemyArmor" type="number" min="0" step="0.01" value="300">
+          </label>
+
+          <label>Сопротивление брони AR (% режет AP)
+            <input id="armorRes" type="number" min="0" max="100" step="0.1" value="20">
+          </label>
+
+          <label>Название сета (для сравнения)
+            <input id="setName" type="text" placeholder="Напр: АК-47 + броня A" value="Сет 1">
+          </label>
+
+          <div class="mini">
+            <div class="chip">Бронебойность: <b id="effApOut">—</b>%</div>
+            <div class="chip">Урон по HP/выстр (с бронёй): <b id="hpShotOut">—</b></div>
+            <div class="chip">Урон по броне/выстр: <b id="armorShotOut">—</b></div>
+          </div>
+
+          <button id="calcBtn" class="full">Посчитать (для формы)</button>
+
+          <div class="formResults">
+            <div class="r"><span>Выстрелов</span><b id="shotsNow">—</b></div>
+            <div class="r"><span>Перезарядок</span><b id="reloadsNow">—</b></div>
+            <div class="r"><span>Время для убийства(сек)</span><b id="ttkNow">—</b></div>
+            <div class="r"><span>Урон в HP</span><b id="hpDmgNow">—</b></div>
+            <div class="r"><span>Урон в броню</span><b id="armorDmgNow">—</b></div>
+          </div>
+
+          <p class="hint">
+            Нажми <b>Добавить сет</b> — текущие параметры сохранятся и появятся в сравнении.
+            Клик по сету слева загрузит его обратно в форму.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Сеты (кликни, чтобы выбрать/загрузить)</h2>
+      <div id="setsList" class="setsList"></div>
+    </section>
+
+    <section class="card">
+      <h2>Сравнение</h2>
+      <div class="tableWrap">
+        <table id="compareTable">
+          <thead>
+            <tr>
+              <th>Сет</th>
+              <th>Бронебой</th>
+              <th>Выстр.</th>
+              <th>Перез.</th>
+              <th>Время</th>
+              <th>Урон HP</th>
+              <th>Урон броня</th>
+              <th>Общий</th>
+            </tr>
+          </thead>
+          <tbody id="compareBody"></tbody>
+        </table>
+      </div>
+      <p class="hint">Лучший сет подсвечивается.</p>
+    </section>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
