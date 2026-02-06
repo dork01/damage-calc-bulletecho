@@ -1,4 +1,11 @@
 :root{
+html, body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+:root{
   --bg:#0b0f14;
   --card:#121925;
   --muted:#9fb0c3;
@@ -9,21 +16,36 @@
   --bad: rgba(255,120,120,.18);
 }
 
-*{box-sizing:border-box}
+*{ box-sizing:border-box; }
+
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 800px at 20% 0%, rgba(90,167,255,.15), transparent 55%),
-              radial-gradient(900px 700px at 90% 10%, rgba(132,255,210,.10), transparent 60%),
-              var(--bg);
+  background:
+    radial-gradient(1200px 800px at 20% 0%, rgba(90,167,255,.15), transparent 55%),
+    radial-gradient(900px 700px at 90% 10%, rgba(132,255,210,.10), transparent 60%),
+    var(--bg);
   color:var(--text);
 }
-.app{ max-width:1200px; margin: 22px auto; padding: 0 14px 24px; }
 
-.top{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.app{
+  max-width:1200px;
+  margin: 22px auto;
+  padding: 0 14px 24px;
+}
+
+.top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
 h1{ margin: 0; font-size: 20px; letter-spacing:.2px; }
 
 .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
 button{
   border:1px solid rgba(90,167,255,.55);
   background: rgba(90,167,255,.18);
@@ -32,13 +54,19 @@ button{
   border-radius: 12px;
   cursor:pointer;
   font-weight: 750;
+  -webkit-tap-highlight-color: transparent;
 }
 button:hover{ filter: brightness(1.08); }
 button.ghost{ border-color: var(--border); background: rgba(255,255,255,.04); font-weight:650; }
 button.danger{ border-color: rgba(255,120,120,.5); background: var(--bad); }
 button:disabled{ opacity:.5; cursor:not-allowed; }
 
-.grid{ margin-top: 12px; display:grid; grid-template-columns: 1.4fr .8fr 1fr; gap:12px; }
+.grid{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: 1.4fr .8fr 1fr;
+  gap:12px;
+}
 
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -53,9 +81,14 @@ h3{ margin: 4px 0 8px; font-size: 13px; color: rgba(234,242,255,.9); }
 .twoCol{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
 label{
-  display:flex; flex-direction:column; gap:6px;
-  margin: 10px 0; font-size: 12.5px; color: rgba(234,242,255,.9);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin: 10px 0;
+  font-size: 12.5px;
+  color: rgba(234,242,255,.9);
 }
+
 input{
   width:100%;
   border-radius: 12px;
@@ -70,7 +103,13 @@ input:focus{
   box-shadow: 0 0 0 3px rgba(90,167,255,.15);
 }
 
-.mini{ display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 6px; }
+.mini{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin: 8px 0 6px;
+}
+
 .chip{
   border:1px solid var(--border);
   background: rgba(0,0,0,.18);
@@ -90,7 +129,10 @@ input:focus{
   gap:8px;
 }
 .formResults .r{
-  display:flex; justify-content:space-between; align-items:baseline; gap:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:8px;
   border:1px dashed rgba(255,255,255,.10);
   border-radius: 12px;
   padding: 8px 10px;
@@ -102,6 +144,7 @@ input:focus{
 .hint{ margin: 10px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
 
 .setsList{ display:flex; flex-direction:column; gap:8px; }
+
 .setCard{
   border:1px solid var(--border);
   background: rgba(0,0,0,.18);
@@ -111,10 +154,21 @@ input:focus{
 }
 .setCard:hover{ border-color: rgba(90,167,255,.35); }
 .setCard.active{ border-color: rgba(90,167,255,.65); box-shadow: 0 0 0 3px rgba(90,167,255,.12); }
+
 .setTitle{ display:flex; justify-content:space-between; gap:10px; align-items:center; }
 .setTitle b{ font-size: 13px; }
-.setMeta{ margin-top: 6px; color: var(--muted); font-size: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+
+.setMeta{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
 .smallBtnRow{ margin-top: 10px; display:flex; gap:8px; }
+
 .smallBtn{
   flex:1;
   border-color: var(--border);
@@ -124,69 +178,99 @@ input:focus{
   border-radius: 12px;
 }
 
-.tableWrap{ overflow:auto; border-radius: 12px; border:1px solid var(--border); }
-table{ width:100%; border-collapse: collapse; min-width: 760px; }
-th, td{ padding: 10px 10px; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 12.5px; text-align:left; }
-th{ color: rgba(234,242,255,.85); background: rgba(255,255,255,.03); position: sticky; top:0; }
+/* Таблица сравнения */
+.tableWrap{
+  overflow:auto;
+  border-radius: 12px;
+  border:1px solid var(--border);
+}
+table{
+  width:100%;
+  border-collapse: collapse;
+  min-width: 760px; /* desktop ok */
+}
+th, td{
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: 12.5px;
+  text-align:left;
+}
+th{
+  color: rgba(234,242,255,.85);
+  background: rgba(255,255,255,.03);
+  position: sticky;
+  top:0;
+}
 td b{ color: var(--accent); }
 tr.best{ background: var(--good); }
 
+/* --- Mobile actions: по умолчанию скрыты --- */
+.mobileActions{ display:none; }
+
+/* Адаптив */
 @media (max-width: 1050px){
   .grid{ grid-template-columns: 1fr; }
   .twoCol{ grid-template-columns: 1fr; }
 }
-/* Мобила: всё, что "в ряд" -> в колонку */
+
+/* Мобила */
 @media (max-width: 720px){
 
-  /* 1) Карточка сета: мета-данные под названием — в столбик */
+  /* верхние кнопки прячем */
+  .top .actions{ display:none; }
+
+  /* iOS/Safari: чтобы не зумило при фокусе */
+  input, button, select, textarea{ font-size:16px; }
+
+  /* мини-плашки и мета — в столбик */
   .setMeta{
-    flex-direction: column !important;
-    gap: 6px !important;
-    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
   }
 
-  /* 2) Мини-плашки (effAP / HP/выстр / броня/выстр) — в столбик */
   .mini{
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 8px !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
   }
+
   .chip{
-    width: 100% !important;
-    border-radius: 12px !important; /* чтобы как карточка */
+    width: 100%;
+    border-radius: 12px;
     display:flex;
     justify-content: space-between;
     gap: 10px;
   }
 
-  /* 3) Результаты формы — в одну колонку */
-  .formResults{
-    grid-template-columns: 1fr !important;
-  }
-  .formResults .r{
-    padding: 12px 12px !important;
-  }
+  /* результаты формы — в 1 колонку */
+  .formResults{ grid-template-columns: 1fr; }
+  .formResults .r{ padding: 12px 12px; }
 
-  /* 4) Кнопки внутри карточки сета — в столбик (удобнее для пальцев) */
-  .smallBtnRow{
-    flex-direction: column !important;
-  }
-  .smallBtn{
-    width: 100% !important;
-  }
-}
-@media (max-width: 720px){
+  /* кнопки в карточках сетов — в столбик */
+  .smallBtnRow{ flex-direction: column; }
+  .smallBtn{ width: 100%; }
+
+  /* таблица: убираем min-width, чтобы не раздувала страницу */
   table{
-    min-width: 0 !important;
-    width: 100% !important;
+    min-width: 0;
+    width: 100%;
     table-layout: fixed;
   }
   th, td{
     white-space: normal;
     word-break: break-word;
   }
-}
 
-input, button, select, textarea{
-  font-size: 16px;
+  /* мобильная панель кнопок внутри формы (НЕ sticky, просто рядом с "Посчитать") */
+  .mobileActions{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .mobileActions button{
+    width: 100%;
+    padding: 14px 12px;
+  }
 }
