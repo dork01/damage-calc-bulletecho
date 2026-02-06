@@ -1,5 +1,7 @@
 const $ = (id) => document.getElementById(id);
 
+const $ = (id) => document.getElementById(id);
+
 function clamp(x, min, max){ return Math.min(Math.max(x, min), max); }
 function num(v, fallback=0){ const x = Number(v); return Number.isFinite(x) ? x : fallback; }
 function fmt(x, d=2){ return Number.isFinite(x) ? x.toFixed(d) : "—"; }
@@ -254,8 +256,13 @@ function renderCompare(){
 
 function syncActiveButtons(){
   const hasActive = activeSetId !== null && sets.some(s => s.id === activeSetId);
+
   $("updateSetBtn").disabled = !hasActive;
+  if ($("updateSetBtnMobile")) {
+    $("updateSetBtnMobile").disabled = !hasActive;
+  }
 }
+
 
 function addSet(){
   const params = getFormParams();
@@ -303,8 +310,13 @@ $("clearSetsBtn").addEventListener("click", clearSets);
 ].forEach(id => {
   $(id).addEventListener("input", () => calcForForm());
 });
+$("addSetBtnMobile")?.addEventListener("click", addSet);
+$("updateSetBtnMobile")?.addEventListener("click", updateActiveSet);
+$("clearSetsBtnMobile")?.addEventListener("click", clearSets);
+
 
 // старт
 calcForForm();
 renderSets();
 syncActiveButtons();
+
