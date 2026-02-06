@@ -175,3 +175,18 @@ tr.best{ background: var(--good); }
     width: 100% !important;
   }
 }
+@media (max-width: 720px){
+  table{
+    min-width: 0 !important;
+    width: 100% !important;
+    table-layout: fixed;
+  }
+  th, td{
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+input, button, select, textarea{
+  font-size: 16px;
+}
