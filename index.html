@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <div class="app">
+<div class="app">
   <div class="top">
     <h1>Калькулятор урона (AP→HP, AR режет AP) + сравнение сетов</h1>
     <div class="actions">
@@ -81,6 +81,13 @@
           </div>
 
           <button id="calcBtn" class="full">Посчитать (для формы)</button>
+         <div class="actions mobileActions">
+  <button id="addSetBtnMobile">➕ Добавить сет</button>
+  <button id="updateSetBtnMobile" class="ghost" disabled>Обновить сет</button>
+  <button id="clearSetsBtnMobile" class="danger">Очистить</button>
+</div>
+
+
 
           <div class="formResults">
             <div class="r"><span>Выстрелов</span><b id="shotsNow">—</b></div>
@@ -126,6 +133,7 @@
     </section>
   </div>
 </div>
+
 
   <script src="script.js"></script>
 </body>
