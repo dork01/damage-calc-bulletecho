@@ -1,7 +1,5 @@
 const $ = (id) => document.getElementById(id);
 
-const $ = (id) => document.getElementById(id);
-
 function clamp(x, min, max){ return Math.min(Math.max(x, min), max); }
 function num(v, fallback=0){ const x = Number(v); return Number.isFinite(x) ? x : fallback; }
 function fmt(x, d=2){ return Number.isFinite(x) ? x.toFixed(d) : "—"; }
